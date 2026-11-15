@@ -11,8 +11,8 @@ const CAFE = {
 
 const CATEGORIES = [
   { id: "tatli", name: "Tatlılar", image: "images/antep-san-sebastian.jpg" },
-  { id: "soguk", name: "Soğuk İçecekler", image: "images/iced-asude-latte.jpg" },
   { id: "sicak", name: "Sıcak İçecekler", image: "images/cappuccino.jpg" },
+  { id: "soguk", name: "Soğuk İçecekler", image: "images/iced-asude-latte.jpg" },
   { id: "ekstra", name: "Ekstralar", image: "images/cay.jpg" },
 ];
 
