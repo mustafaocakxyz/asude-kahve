@@ -1,6 +1,6 @@
 const CAFE = {
   name: "Asude Kahve",
-  tagline: "Sükûnetin ve lezzetin adresi.",
+  tagline: "Huzurun ve lezzetin adresi.",
   phone: "+905466659199",
   phoneLabel: "0546 665 91 99",
   email: "asudekahve@gmail.com",
