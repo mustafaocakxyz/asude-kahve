@@ -20,6 +20,7 @@ const PRODUCTS = [
   { id: "cilekli-magnolia", cat: "tatli", name: "Çilekli Magnolya", desc: "Vanilyalı magnolia, bisküvi kırığı ve çilek.", kcal: 450, price: 250, image: "images/cilekli-magnolia.jpg" },
   { id: "muzlu-magnolia", cat: "tatli", name: "Muzlu Magnolya", desc: "Vanilyalı magnolia, bisküvi kırığı ve muz.", kcal: 480, price: 250, image: "images/muzlu-magnolia.jpg" },
   { id: "tiramisu", cat: "tatli", name: "Tiramisu", desc: "Kedidili, mascarpone krema ve espresso ile.", kcal: 430, price: 240, image: "images/tiramisu.jpg" },
+  { id: "visneli-tart", cat: "tatli", name: "Vişneli Muhallebili Tart", desc: "", price: 260 },
   { id: "cookie", cat: "tatli", name: "Çikolatalı Cookie", desc: "Çikolatalı cookie, üzeri Belçika çikolatası ile (isteğe bağlı).", kcal: 350, price: 160, image: "images/cookie.jpg" },
   { id: "profiterol", cat: "tatli", name: "Profiterol", desc: "Choux hamuru, kadifemsi pastacı kreması ve akışkan çikolata sosu.", kcal: 500, price: 260, image: "images/profiterol.jpg" },
   { id: "cikolatali-pasta", cat: "tatli", name: "Çikolatalı Pasta", desc: "Kakaolu kek, akışkan çikolatalı krema ve kıtır fındık parçaları.", kcal: 550, price: 270, image: "images/cikolatali-pasta.jpg" },
@@ -37,6 +38,7 @@ const PRODUCTS = [
   { id: "iced-americano", cat: "soguk", name: "Ice Americano", desc: "", kcal: 10, price: 160, image: "images/iced-americano.jpg" },
   { id: "iced-karamel-latte", cat: "soguk", name: "Ice Karamel Latte", desc: "", kcal: 280, price: 210, image: "images/iced-latte-cesitleri.jpg" },
   { id: "iced-pumpkin-spice-latte", cat: "soguk", name: "Ice Pumpkin Spice Latte", desc: "", kcal: 280, price: 210, image: "images/iced-latte-cesitleri.jpg" },
+  { id: "ice-chai-tea-latte", cat: "soguk", name: "Ice Chai Tea Latte", desc: "", price: 210 },
   { id: "iced-vanilya-latte", cat: "soguk", name: "Ice Vanilya Latte", desc: "", kcal: 280, price: 210, image: "images/iced-latte-cesitleri.jpg" },
   { id: "iced-findik-latte", cat: "soguk", name: "Ice Fındık Latte", desc: "", kcal: 280, price: 210, image: "images/iced-latte-cesitleri.jpg" },
   { id: "iced-lotus-latte", cat: "soguk", name: "Ice Lotus Latte", desc: "", kcal: 280, price: 210, image: "images/iced-latte-cesitleri.jpg" },
@@ -48,37 +50,67 @@ const PRODUCTS = [
   { id: "iced-asude-latte", cat: "soguk", name: "Ice Asude Latte", desc: "", kcal: 280, price: 220, image: "images/iced-asude-latte.jpg" },
   { id: "ice-tea-seftali", cat: "soguk", name: "Ice Tea Şeftali", desc: "", kcal: 100, price: 150, image: "images/ice-tea.jpg" },
   { id: "ice-tea-limon", cat: "soguk", name: "Ice Tea Limon", desc: "", kcal: 100, price: 150, image: "images/ice-tea.jpg" },
+  { id: "ice-fistikli-salep", cat: "soguk", name: "Ice Fıstıklı Salep", desc: "", price: 220 },
+  { id: "osmanli-serbeti", cat: "soguk", name: "Osmanlı Şerbeti", desc: "", price: 170 },
   { id: "mango-dragon", cat: "soguk", name: "Mango & Dragon", desc: "Ejder meyvesinin göz alıcı rengi ve mangonun yoğun tropikal tatlılığının ferahlatıcı bir dokunuşla birleştiği, canlı ve egzotik bir lezzet.", kcal: 180, price: 210, image: "images/mango-dragon.jpg" },
   { id: "passion-guava", cat: "soguk", name: "Passion & Guava", desc: "Çarkıfelek meyvesi ve guavanın tropikal uyumu. Ferahlatıcı bir dokunuşla birleşen, dengeli, canlandırıcı ve akılda kalan bir tat.", kcal: 180, price: 210, image: "images/passion-guava.jpg" },
+  { id: "yaban-mersinli-cool-lime", cat: "soguk", name: "Yaban Mersinli Cool Lime", desc: "", price: 220 },
   { id: "mango-coconut", cat: "soguk", name: "Mango & Coconut", desc: "Hindistan cevizinin kremsi dokunuşu ve mangonun zengin tatlılığıyla harmanlanmış, her yudumda ferahlık sunan egzotik bir tat.", kcal: 250, price: 230, image: "images/mango-coconut.jpg" },
   { id: "bitter-orange", cat: "soguk", name: "Bitter Orange & Strawberry", desc: "Çileğin canlı aroması ve bitter portakalın aromatik dokunuşuyla harmanlanmış; ferahlatıcı, dengeli ve gurme bir lezzet.", kcal: 180, price: 230, image: "images/bitter-orange.jpg" },
   { id: "mandarin-guava", cat: "soguk", name: "Mandarin & Guava", desc: "Mandalinanın canlandırıcı, taze narenciye notaları ve guavanın yumuşak tropikal aromasıyla dengelenmiş, hafif ve akılda kalan bir lezzet.", kcal: 180, price: 230, image: "images/mandarin-guava.jpg" },
+  { id: "blueberry-clove", cat: "soguk", name: "Blueberry & Clove", desc: "", price: 230 },
   { id: "cilekli-milkshake", cat: "soguk", name: "Çilekli Milkshake", desc: "", kcal: 450, price: 220, image: "images/cilekli-milkshake.jpg" },
+  { id: "cool-lime", cat: "soguk", name: "Cool Lime", desc: "", price: 200 },
   { id: "berry-hibiscus", cat: "soguk", name: "Berry Hibiscus", desc: "Zengin kırmızı meyve aromaları ve hibiskusun zarif dokunuşuyla harmanlanmış, ferahlatıcı ve canlandırıcı bir lezzet.", kcal: 120, price: 200, image: "images/berry-hibiscus.jpg" },
   { id: "limonata", cat: "soguk", name: "Limonata", desc: "", kcal: 150, price: 150, image: "images/limonata.jpg" },
   { id: "cilekli-limonata", cat: "soguk", name: "Çilekli Limonata", desc: "", kcal: 200, price: 180, image: "images/cilekli-limonata.jpg" },
+  { id: "churchill", cat: "soguk", name: "Churchill", desc: "", price: 90 },
+  { id: "mango-frozen", cat: "soguk", name: "Mango Frozen", desc: "", price: 220 },
+  { id: "cilek-frozen", cat: "soguk", name: "Çilek Frozen", desc: "", price: 220 },
   { id: "portakal-suyu", cat: "soguk", name: "Portakal Suyu", desc: "", kcal: 180, price: 150, image: "images/portakal-suyu.jpg" },
+  { id: "borovnica", cat: "soguk", name: "Borovnica", desc: "", price: 160 },
+  { id: "cool-watermelon", cat: "soguk", name: "Cool Watermelon", desc: "", price: 180 },
 
+  { id: "americano", cat: "sicak", name: "Americano", desc: "", price: 160 },
   { id: "espresso", cat: "sicak", name: "Espresso", desc: "", kcal: 5, price: 135, image: "images/espresso.jpg" },
+  { id: "double-espresso", cat: "sicak", name: "Double Espresso", desc: "", price: 145 },
   { id: "cappuccino", cat: "sicak", name: "Cappuccino", desc: "", kcal: 120, price: 190, image: "images/cappuccino.jpg" },
+  { id: "flat-white", cat: "sicak", name: "Flat White", desc: "", price: 180 },
   { id: "cortado", cat: "sicak", name: "Cortado", desc: "", kcal: 80, price: 170, image: "images/cortado.jpg" },
   { id: "filtre-kahve", cat: "sicak", name: "Filtre Kahve", desc: "Günün her saati taze çekilmiş ve demlenmiş blend filtre kahve.", kcal: 5, price: 140, image: "images/filtre-kahve.jpg" },
   { id: "turk-kahvesi", cat: "sicak", name: "Türk Kahvesi", desc: "", kcal: 5, price: 125, image: "images/turk-kahvesi.jpg" },
   { id: "double-turk-kahvesi", cat: "sicak", name: "Double Türk Kahvesi", desc: "", kcal: 10, price: 145, image: "images/double-turk-kahvesi.jpg" },
   { id: "cafe-latte", cat: "sicak", name: "Latte", desc: "", kcal: 150, price: 190, image: "images/cafe-latte.jpg" },
+  { id: "menengic-kahve", cat: "sicak", name: "Menengiç Kahve", desc: "", price: 130 },
+  { id: "dibek-kahve", cat: "sicak", name: "Dibek Kahve", desc: "", price: 130 },
   { id: "espresso-macchiato", cat: "sicak", name: "Macchiato", desc: "", kcal: 40, price: 150, image: "images/espresso-macchiato.jpg" },
   { id: "spanish-latte", cat: "sicak", name: "Spanish Latte", desc: "", kcal: 250, price: 220, image: "images/latte-cesitleri.jpg" },
+  { id: "karamel-macchiato", cat: "sicak", name: "Karamel Macchiato", desc: "", price: 210 },
   { id: "pumpkin-spice-latte", cat: "sicak", name: "Pumpkin Spice Latte", desc: "", kcal: 250, price: 210, image: "images/latte-cesitleri.jpg" },
   { id: "karamel-latte", cat: "sicak", name: "Karamel Latte", desc: "", kcal: 250, price: 210, image: "images/latte-cesitleri.jpg" },
   { id: "vanilya-latte", cat: "sicak", name: "Vanilya Latte", desc: "", kcal: 250, price: 210, image: "images/latte-cesitleri.jpg" },
   { id: "findik-latte", cat: "sicak", name: "Fındık Latte", desc: "", kcal: 250, price: 210, image: "images/latte-cesitleri.jpg" },
   { id: "lotus-latte", cat: "sicak", name: "Lotus Latte", desc: "", kcal: 250, price: 210, image: "images/latte-cesitleri.jpg" },
+  { id: "mocha", cat: "sicak", name: "Mocha", desc: "", price: 220 },
   { id: "asude-latte", cat: "sicak", name: "Asude Latte", desc: "", kcal: 250, price: 220, image: "images/latte-cesitleri.jpg" },
   { id: "white-chocolate-latte", cat: "sicak", name: "White Chocolate Mocha", desc: "", kcal: 250, price: 220, image: "images/latte-cesitleri.jpg" },
+  { id: "toffee-nut-latte", cat: "sicak", name: "Toffee Nut Latte", desc: "", price: 220 },
+  { id: "chai-tea-latte", cat: "sicak", name: "Chai Tea Latte", desc: "", price: 210 },
   { id: "creme-brulee-latte", cat: "sicak", name: "Crème Brûlée", desc: "", kcal: 250, price: 220, image: "images/latte-cesitleri.jpg" },
+  { id: "sicak-cikolata", cat: "sicak", name: "Sıcak Çikolata", desc: "", price: 200 },
+  { id: "beyaz-sicak-cikolata", cat: "sicak", name: "Beyaz Sıcak Çikolata", desc: "", price: 200 },
+  { id: "cilekli-sicak-cikolata", cat: "sicak", name: "Çilekli Sıcak Çikolata", desc: "", price: 210 },
+  { id: "fistikli-salep", cat: "sicak", name: "Fıstıklı Salep", desc: "", price: 200 },
+  { id: "tarcinli-salep", cat: "sicak", name: "Tarçınlı Salep", desc: "", price: 170 },
 
   { id: "cay", cat: "ekstra", name: "Çay", desc: "", kcal: 2, price: 50, image: "images/cay.jpg" },
   { id: "fincan-cay", cat: "ekstra", name: "Fincan Çay", desc: "", kcal: 2, price: 70, image: "images/fincan-cay.jpg" },
+  { id: "soda", cat: "ekstra", name: "Soda (200 cc)", desc: "", price: 55 },
+  { id: "meyveli-soda", cat: "ekstra", name: "Meyveli Soda", desc: "", price: 70 },
+  { id: "asude-sandvic", cat: "ekstra", name: "Asude Sandviç", desc: "", price: 170 },
+  { id: "osmanli-cayi", cat: "ekstra", name: "Osmanlı Çayı", desc: "", price: 140 },
+  { id: "bitki-caylari", cat: "ekstra", name: "Bitki Çayları", desc: "", price: 140 },
+  { id: "su", cat: "ekstra", name: "Su (500 cc)", desc: "", price: 25 },
 ];
 
 const I = {
@@ -128,10 +160,15 @@ function metaLabel(product) {
   return `<span class="meta"><span class="kcal">${esc(priceLabel(product))}</span>${calories}</span>`;
 }
 
+function photo(product, alt) {
+  if (!product.image) return `<span class="thumb-fallback" aria-hidden="true"></span>`;
+  return `<img src="${esc(product.image)}" alt="${esc(alt || "")}">`;
+}
+
 function itemRow(product) {
   const desc = product.desc ? `<p>${esc(product.desc)}</p>` : "";
   return `<a class="item" href="#/p/${product.id}">
-    <img src="${esc(product.image)}" alt="${esc(product.name)}">
+    ${photo(product, product.name)}
     <div class="item-body">
       <h3>${esc(product.name)}</h3>
       ${desc}
@@ -204,7 +241,7 @@ function categoryView(id) {
   const seen = new Set();
   const featured = [];
   items.forEach((product) => {
-    if (seen.has(product.image) || featured.length >= 6) return;
+    if (!product.image || seen.has(product.image) || featured.length >= 6) return;
     seen.add(product.image);
     featured.push(product);
   });
@@ -234,7 +271,7 @@ function productView(id) {
     ? `<h2 class="section-title">Benzer lezzetler</h2>
       <div class="similar">${similar.map((entry) =>
         `<a href="#/p/${entry.id}">
-          <img src="${esc(entry.image)}" alt="">
+          ${photo(entry, "")}
           <strong>${esc(entry.name)}</strong>
           <em>${esc(priceLabel(entry))}</em>
         </a>`).join("")}</div>`
@@ -245,7 +282,7 @@ function productView(id) {
       <h1 class="product-title">${esc(product.name)}</h1>
       <span></span>
     </header>
-    <div class="product-hero"><img src="${esc(product.image)}" alt="${esc(product.name)}"></div>
+    ${product.image ? `<div class="product-hero"><img src="${esc(product.image)}" alt="${esc(product.name)}"></div>` : ""}
     <div class="sheet">
       ${metaLabel(product)}
       ${desc}
