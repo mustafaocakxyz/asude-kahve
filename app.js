@@ -160,9 +160,35 @@ function metaLabel(product) {
   return `<span class="meta"><span class="kcal">${esc(priceLabel(product))}</span>${calories}</span>`;
 }
 
+const PLACEHOLDERS = {
+  dessert: `<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M18 48 40 24l22 24Z" fill="#1d4d3a"/><path d="M20 48h40v7a6 6 0 0 1-6 6H26a6 6 0 0 1-6-6Z" fill="#2f6b52"/><circle cx="40" cy="38" r="3.5" fill="#f3d7a1"/><path d="M14 66h52" stroke="#1d4d3a" stroke-width="3" stroke-linecap="round"/></svg>`,
+  cold: `<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M27 16h26l-3 42a10 10 0 0 1-10 8h0a10 10 0 0 1-10-8Z" fill="#e7f3ee" stroke="#1d4d3a" stroke-width="2.5"/><path d="M29 38h22l-2 16a8 8 0 0 1-8 6h-2a8 8 0 0 1-8-6Z" fill="#7eb8a2"/><circle cx="36" cy="28" r="2.4" fill="#fff"/><circle cx="46" cy="32" r="1.8" fill="#fff"/><path d="M50 14V8" stroke="#1d4d3a" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+  coffee: `<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M20 34h34v12a14 14 0 0 1-14 14H34A14 14 0 0 1 20 46Z" fill="#1d4d3a"/><path d="M54 38h6a8 8 0 0 1 0 16h-6" fill="none" stroke="#1d4d3a" stroke-width="3"/><ellipse cx="37" cy="34" rx="17" ry="4" fill="#d7efe4"/><path d="M28 24c1-4 0-7 0-7M37 22c1-5 0-9 0-9M46 24c1-4 0-7 0-7" stroke="#1d4d3a" stroke-width="2" stroke-linecap="round"/><path d="M16 66h44" stroke="#1d4d3a" stroke-width="3" stroke-linecap="round"/></svg>`,
+  cocoa: `<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M18 36h36v14a14 14 0 0 1-14 14H32A14 14 0 0 1 18 50Z" fill="#1d4d3a"/><path d="M54 40h7a7 7 0 0 1 0 14h-7" fill="none" stroke="#1d4d3a" stroke-width="3"/><path d="M22 36c4-8 10-10 16-6 6-6 14-2 16 6" fill="#f3d7a1"/><circle cx="30" cy="30" r="2" fill="#fff"/><path d="M16 68h46" stroke="#1d4d3a" stroke-width="3" stroke-linecap="round"/></svg>`,
+  tea: `<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M31 14h18l3 12c5 4 8 12 8 20 0 14-7 24-20 24S20 60 20 46c0-8 3-16 8-20Z" fill="#e7f3ee" stroke="#1d4d3a" stroke-width="2.5"/><path d="M28 42h24c-1 12-6 18-12 18s-11-6-12-18Z" fill="#c45c4a"/><path d="M30 68h20" stroke="#1d4d3a" stroke-width="3" stroke-linecap="round"/></svg>`,
+  soda: `<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M34 12h12l-2 8h-8Z" fill="#1d4d3a"/><path d="M30 22h20l-3 42a8 8 0 0 1-8 6h-4a8 8 0 0 1-8-6Z" fill="#e7f3ee" stroke="#1d4d3a" stroke-width="2.5"/><path d="M31 40h18l-2 18a6 6 0 0 1-6 5h-2a6 6 0 0 1-6-5Z" fill="#7eb8a2"/><circle cx="36" cy="32" r="2" fill="#fff"/><circle cx="44" cy="36" r="1.6" fill="#fff"/></svg>`,
+  water: `<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M26 16h28l-4 46a8 8 0 0 1-8 6h-4a8 8 0 0 1-8-6Z" fill="#e7f3ee" stroke="#1d4d3a" stroke-width="2.5"/><path d="M27 40h26l-3 16a6 6 0 0 1-6 5h-8a6 6 0 0 1-6-5Z" fill="#b9ddd0"/></svg>`,
+  sandwich: `<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M16 36c8-12 40-12 48 0v6H16Z" fill="#e6c48a"/><path d="M16 42h48v6H16Z" fill="#c45c4a"/><path d="M16 48h48v6c-8 8-40 8-48 0Z" fill="#1d4d3a"/><path d="M22 34c6 3 12 3 18 0" stroke="#f3d7a1" stroke-width="2" stroke-linecap="round"/></svg>`,
+};
+
+function placeholderKind(product) {
+  const name = product.name.toLocaleLowerCase("tr");
+  if (product.cat === "tatli") return "dessert";
+  if (product.cat === "soguk") return "cold";
+  if (product.cat === "ekstra") {
+    if (name.startsWith("su")) return "water";
+    if (name.includes("soda")) return "soda";
+    if (name.includes("sandviç")) return "sandwich";
+    return "tea";
+  }
+  if (name.includes("çikolata")) return "cocoa";
+  if (name.includes("çay")) return "tea";
+  return "coffee";
+}
+
 function photo(product, alt) {
-  if (!product.image) return `<span class="thumb-fallback" aria-hidden="true"></span>`;
-  return `<img src="${esc(product.image)}" alt="${esc(alt || "")}">`;
+  if (product.image) return `<img src="${esc(product.image)}" alt="${esc(alt || "")}">`;
+  return `<span class="thumb-fallback">${PLACEHOLDERS[placeholderKind(product)]}</span>`;
 }
 
 function itemRow(product) {
@@ -282,7 +308,9 @@ function productView(id) {
       <h1 class="product-title">${esc(product.name)}</h1>
       <span></span>
     </header>
-    ${product.image ? `<div class="product-hero"><img src="${esc(product.image)}" alt="${esc(product.name)}"></div>` : ""}
+    ${product.image
+      ? `<div class="product-hero"><img src="${esc(product.image)}" alt="${esc(product.name)}"></div>`
+      : `<div class="product-hero placeholder-hero">${PLACEHOLDERS[placeholderKind(product)]}</div>`}
     <div class="sheet">
       ${metaLabel(product)}
       ${desc}
