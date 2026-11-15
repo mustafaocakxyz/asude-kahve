@@ -385,12 +385,25 @@ img { max-width: 100%; }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.kcal {
+.meta {
   margin-top: auto;
   padding-top: 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.kcal {
   color: var(--kcal);
   font-weight: 650;
   font-size: 16px;
+}
+.cal {
+  color: #c9c4ba;
+  font-size: 12px;
+  font-weight: 500;
+}
+.vat {
+  margin: 14px 16px 0;
 }
 
 .product-hero {
@@ -406,7 +419,8 @@ img { max-width: 100%; }
   object-position: center 68%;
 }
 .sheet { padding: 18px 18px 8px; }
-.sheet .kcal { font-size: 22px; display: block; margin: 0 0 10px; }
+.sheet .meta { margin: 0 0 10px; }
+.sheet .kcal { font-size: 22px; }
 .sheet .desc {
   margin: 0;
   color: #e6e2da;
@@ -568,7 +582,7 @@ input:focus, textarea:focus { border-color: #9dceba; }
 .nav a.active { background: rgba(255, 255, 255, 0.12); }
 
 @media (min-width: 800px) {
-  .grid { grid-template-columns: 1fr 1fr 1fr; gap: 16px; padding: 24px 20px; }
+  .grid { grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 24px 20px; }
   .card span { font-size: 18px; }
   .item img { width: 128px; height: 128px; }
   .item h3 { font-size: 22px; }
